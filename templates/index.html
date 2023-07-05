@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <form action="/edit" method="post" enctype="multipart/form-data">
+        <input type="file" name="video" accept="video/*" class="video">
+        <br/>
+        <label  style="color:blue;text-align:center;">Enter Start Time (in Second)</label>
+        <br/>
+        <input type="number" name="start" placeholder="start time" required class="start">
+        <br/>
+        <label>Enter End Time (in Second)</label>
+        <br/>
+        <input type="number" name="end" placeholder="end time" required class="end">
+        <br/>
+<!--        <input type="submit" value="Download Video">-->
+        <button type="submit" name="action" value="add_captions">Add Captions</button>
+        <button type="submit" name="action" value="resize_video">Resize Video</button>
+    </form>
+    {% if video_url %}
+    <p>file:///{{video_url}}</p>
+    <video controls >
+        <source src="{{url_for(video_url)}}">
+    </video>
+    {% else %}
+    <p>No video to display.</p>
+    {% endif %}
+</body>
+</html>
+
+

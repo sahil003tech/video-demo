@@ -19,7 +19,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/edit', methods=['POST'])
+@app.route('/', methods=['POST'])
 def edit_video():
     if 'video' not in request.files:
         return redirect(url_for('index'))
